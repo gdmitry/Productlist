@@ -6,12 +6,7 @@
             "stocked": true,
             "name": "Football"
         },
-        {
-            "category": "Sporting Goods",
-            "price": "$9.99",
-            "stocked": true,
-            "name": "Baseball"
-        },
+        
         {
             "category": "Sporting Goods",
             "price": "$29.99",
@@ -29,6 +24,13 @@
             "price": "$399.99",
             "stocked": false,
             "name": "iPhone5"
+        },
+
+        {
+            "category": "Sporting Goods",
+            "price": "$9.99",
+            "stocked": true,
+            "name": "Baseball"
         },
         {
             "category": "Electronics",

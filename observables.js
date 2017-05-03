@@ -10,7 +10,7 @@ btnStream$.subscribe(() => {
     console.log('Clicked');
 }, _.noop, _.noop);
 
-// Observables from Arrays
+// Observables from Arrays (the same for map, set)
 const numbers = [33, 44, 55, 66, 77];
 
 const numbers$ = Rx.Observable.from(numbers);
@@ -25,6 +25,23 @@ numbers$.subscribe(
         console.log("complete");
     });
 
+
+// Create an observable from scratch
+const source$ = new Rx.Observable(observer => {
+    console.log('Creating an observable');
+});
+
+source$.subscribe(
+    x => {
+        console.log(x);
+    },
+    err => {
+        console.log(err);
+    },
+    complete => {
+        console.log(complete);
+    }
+)
 
 // Observables from 
 // https://www.youtube.com/watch?v=ei7FsoXKPl0

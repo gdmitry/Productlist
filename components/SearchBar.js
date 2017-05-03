@@ -5,6 +5,7 @@ export class SearchBar extends React.Component {
         super(props);
         this.handleFilterTextInputChange = this.handleFilterTextInputChange.bind(this);
         this.handleInStockInputChange = this.handleInStockInputChange.bind(this);
+        this.handleClearAction = this.handleClearAction.bind(this);
     }
 
     handleFilterTextInputChange(e) {
@@ -14,6 +15,10 @@ export class SearchBar extends React.Component {
     handleInStockInputChange(e) {
         this.props.onInStockInput(e.target.checked);
     }
+
+    handleClearAction(e) {
+         this.props.onFilterTextInput('');
+    }
     render() {
         return (
             <form>
@@ -22,6 +27,7 @@ export class SearchBar extends React.Component {
                     <input type="checkbox" checked={this.props.inStockOnly} onChange={this.handleInStockInputChange} />
                     {" "} Only show products in stock
                 </p>
+                <button type="button" className="clear" onClick={this.handleClearAction}>X</button>
             </form>
         );
     }
