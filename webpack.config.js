@@ -25,10 +25,10 @@ module.exports = {
         ]
     },
     plugins: [
-        new UglifyJSPlugin({
-            compress: true,
-            sourceMap: true
-        }),
+        // new UglifyJSPlugin({
+        //     compress: true,
+        //     sourceMap: true
+        // }),
         CopyWebpackPlugin([
             { from: "./index.html" }
         ])
