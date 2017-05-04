@@ -29,9 +29,18 @@ numbers$.subscribe(
 // Create an observable from scratch
 const source$ = new Rx.Observable(observer => {
     console.log('Creating an observable');
+    observer.next('First value');
+
+    observer.error(new Error('Something went wrong'));
+    setTimeout(() => {
+        observer.next('Another value');
+        observer.complete();
+    }, 3000);
 });
 
-source$.subscribe(
+source$
+    .catch(err => Rx.Observable.of(err)) // need to call complete callback after error
+    .subscribe(
     x => {
         console.log(x);
     },
@@ -40,8 +49,26 @@ source$.subscribe(
     },
     complete => {
         console.log(complete);
-    }
-)
+    });
 
-// Observables from 
+// Observables from Promises
+
+function getUset(usename) {
+    return $.ajax({
+        url: 'https://api.github.com/users/' + usename,
+        dataType: 'jsonp'
+    }).promise();
+}
+
+
+const sourceP$ = new Rx.Observable.fromPromise(getUset('gdmitry'));
+
+const inputSource$ = Rx.Observable.fromEvent($('#input'));
+
+sourceP$
+    .subscribe(
+    x => {
+        console.log(x);
+    });
+
 // https://www.youtube.com/watch?v=ei7FsoXKPl0
