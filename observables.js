@@ -1,47 +1,6 @@
-import $ from "jquery";
-import Rx from "rxjs/Rx";
-import _ from "lodash";
+require('./observables/fromEvent');
+require('./observables/fromArray');
+require('./observables/fromScratch');
+require('./observables/fromPromise');
 
-// Observables from Event
-const btn = $("#btn");
-const btnStream$ = Rx.Observable.fromEvent(btn, "click");
-
-btnStream$.subscribe(() => {
-    console.log('Clicked');
-}, _.noop, _.noop);
-
-// Observables from Arrays (the same for map, set)
-const numbers = [33, 44, 55, 66, 77];
-
-const numbers$ = Rx.Observable.from(numbers);
-numbers$.subscribe(
-    v => {
-        console.log(v);
-    },
-    err => {
-        console.log(err);
-    },
-    complete => {
-        console.log("complete");
-    });
-
-
-// Create an observable from scratch
-const source$ = new Rx.Observable(observer => {
-    console.log('Creating an observable');
-});
-
-source$.subscribe(
-    x => {
-        console.log(x);
-    },
-    err => {
-        console.log(err);
-    },
-    complete => {
-        console.log(complete);
-    }
-)
-
-// Observables from 
 // https://www.youtube.com/watch?v=ei7FsoXKPl0
