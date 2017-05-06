@@ -3,16 +3,20 @@ const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
-    entry: "./app.js",
+    entry: {
+        "react":"./app.js",
+        "observable": "./observables.js"
+    },
     output: {
         path: path.resolve(__dirname, "build"), // string
-        filename: "bundle.js"
+        filename: "[name].bundle.js"
     },
     module: {
         rules: [
             {
                 test: /\.js$/,
                 loader: "babel-loader",
+                exclude: "/node_modules/",
                 query: {
                     presets: ["es2015", "react"]
                 }
