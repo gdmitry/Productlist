@@ -3,22 +3,25 @@
   "version": "",
   "main": "app.js",
   "scripts": {
-    "build": "webpack"
+    "init": "npm install live-server -g",
+    "build": "webpack",
+    "dev": "webpack -w",
+    "start": "live-server --port=8000 --open=build --ignore=build"
   },
   "dependencies": {
-    "babel-core": "6.24.1",
-    "babel-loader": "7.0.0",
-    "babel-preset-es2015": "latest",
-    "babel-preset-react": "^6.24.1",
-    "path": "0.12.7",
     "react": "15.5.4",
     "react-dom": "15.5.4",
-    "webpack": "2.4.1",
     "rxjs": "5.3.0",
     "jquery": "3.2.1",
     "lodash": "^4.17.4"
   },
   "devDependencies": {
+    "babel-core": "6.24.1",
+    "babel-loader": "7.0.0",
+    "babel-preset-es2015": "latest",
+    "babel-preset-react": "^6.24.1",
+    "webpack": "2.4.1",
+    "path": "0.12.7",
     "copy-webpack-plugin": "^4.0.1",
     "uglifyjs-webpack-plugin": "^0.4.3",
     "webpack-dev-server": "^2.4.5"
