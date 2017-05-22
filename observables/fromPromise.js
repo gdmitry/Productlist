@@ -10,7 +10,10 @@ function getUser(usename) {
 }
 const inputSource$ = Rx.Observable.fromEvent($('#user-name'), 'keyup');
 inputSource$.subscribe(e => {
-    const sourceP$ = new Rx.Observable.fromPromise(getUser('gdmitry'));
+    const sourceP$ = new Rx.Observable.fromPromise(getUser(e.target.value))
+    // .map(user => user.data)
+    .pluck('data');
+
     sourceP$
         .subscribe(x => {
             console.log(x);

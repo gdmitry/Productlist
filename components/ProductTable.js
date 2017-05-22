@@ -45,6 +45,5 @@ export class ProductTable extends React.Component {
                 <tbody>{rows}</tbody>
             </table>
         );
-        return <div></div>
     }
 }
