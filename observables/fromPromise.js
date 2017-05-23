@@ -8,14 +8,11 @@ function getUser(usename) {
         dataType: 'jsonp'
     }).promise();
 }
-const inputSource$ = Rx.Observable.fromEvent($('#user-name'), 'keyup');
-inputSource$.subscribe(e => {
-    const sourceP$ = new Rx.Observable.fromPromise(getUser(e.target.value))
-    // .map(user => user.data)
-    .pluck('data');
+const source$ = Rx.Observable.fromEvent($('#user-name'), 'keyup')
+    .map(e => e.target.value)
+    .map(getUser)
+    .switchMap(Rx.Observable.fromPromise);
 
-    sourceP$
-        .subscribe(x => {
-            console.log(x);
-        });
+source$.subscribe(x => {
+    console.log(x);
 });
