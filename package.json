@@ -3,8 +3,10 @@
   "version": "",
   "main": "app.js",
   "scripts": {
+    "init": "npm install live-server -g",
     "build": "webpack",
-    "start": "node_modules/.bin/webpack-dev-server --progress"
+    "dev": "webpack -w",
+    "start": "live-server --port=8000 --open=build --ignore=build"
   },
   "dependencies": {
     "react": "15.5.4",
